@@ -13,4 +13,10 @@ export const Routes = [
     controller: TodoController,
     action: "get",
   },
+  {
+    method: "get",
+    route: "/todo/:id",
+    controller: TodoController,
+    action: "getById",
+  },
 ];
