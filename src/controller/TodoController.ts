@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { logger } from "../config/LoggerConfig";
 import { AppDataSource } from "../data-source";
 import { Todo } from "../entity/Todo";
 
