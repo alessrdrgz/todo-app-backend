@@ -31,4 +31,10 @@ export const Routes = [
     controller: TodoController,
     action: "search",
   },
+  {
+    method: "delete",
+    route: "/todo/:id",
+    controller: TodoController,
+    action: "delete",
+  },
 ];
