@@ -7,4 +7,10 @@ export const Routes = [
     controller: TodoController,
     action: "create",
   },
+  {
+    method: "get",
+    route: "/todo",
+    controller: TodoController,
+    action: "get",
+  },
 ];
