@@ -15,4 +15,10 @@ export default class TodoController {
       .then((r) => res.send(r))
       .catch((e) => res.status(400).send(e.message));
   }
+
+  public async get(req: Request, res: Response) {
+    this.TodoRepository.find()
+      .then((r) => res.send(r))
+      .catch((e) => res.status(400).send(e.message));
+  }
 }
