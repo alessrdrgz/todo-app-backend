@@ -25,4 +25,10 @@ export const Routes = [
     controller: TodoController,
     action: "update",
   },
+  {
+    method: "post",
+    route: "/todos",
+    controller: TodoController,
+    action: "search",
+  },
 ];
