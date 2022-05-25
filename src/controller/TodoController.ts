@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { logger } from "../config/LoggerConfig";
 import { AppDataSource } from "../data-source";
 import { Todo } from "../entity/Todo";
 
@@ -20,5 +21,14 @@ export default class TodoController {
     this.TodoRepository.find()
       .then((r) => res.send(r))
       .catch((e) => res.status(400).send(e.message));
+  }
+
+  public async getById(req: Request, res: Response) {
+    const { id } = req.params;
+    if (Number.isInteger(+id)) {
+      this.TodoRepository.findOneBy({ idTodo: +id })
+        .then((r) => res.send(r))
+        .catch((e) => res.status(400).send(e.message));
+    } else res.status(400).send(`ID must be an integer`);
   }
 }
