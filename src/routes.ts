@@ -19,4 +19,10 @@ export const Routes = [
     controller: TodoController,
     action: "getById",
   },
+  {
+    method: "patch",
+    route: "/todo/:id",
+    controller: TodoController,
+    action: "update",
+  },
 ];
