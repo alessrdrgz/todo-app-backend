@@ -32,7 +32,7 @@ export default class TodoController {
     } else res.status(400).send(`ID must be an integer`);
   }
 
-  public async update(req: Request, res: Response) {
+  public update(req: Request, res: Response) {
     const { id } = req.params;
     if (Number.isInteger(+id)) {
       this.TodoRepository.update(id, { ...req.body })
@@ -41,9 +41,18 @@ export default class TodoController {
     } else res.status(400).send(`ID must be an integer`);
   }
 
-  public async search(req: Request, res: Response) {
+  public search(req: Request, res: Response) {
     this.TodoRepository.find({ where: { ...req.body } })
       .then((r) => res.send(r))
       .catch((e) => res.status(400).send(e.message));
+  }
+
+  public delete(req: Request, res: Response) {
+    const { id } = req.params;
+    if (Number.isInteger(+id)) {
+      this.TodoRepository.delete(id)
+        .then((r) => res.send(r))
+        .catch((e) => res.status(400).send(e.message));
+    } else res.status(400).send(`ID must be an integer`);
   }
 }
