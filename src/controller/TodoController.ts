@@ -40,4 +40,10 @@ export default class TodoController {
         .catch((e) => res.status(400).send(e.message));
     } else res.status(400).send(`ID must be an integer`);
   }
+
+  public async search(req: Request, res: Response) {
+    this.TodoRepository.find({ where: { ...req.body } })
+      .then((r) => res.send(r))
+      .catch((e) => res.status(400).send(e.message));
+  }
 }
