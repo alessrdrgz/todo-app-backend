@@ -1,4 +1,14 @@
 {
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.ts?$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/"
+    ]
+  },
   "name": "todo-app-backend",
   "version": "0.0.1",
   "description": "Backend for TODO app.",
@@ -23,16 +33,20 @@
     "@typescript-eslint/parser": "^5.26.0",
     "eslint": "^8.16.0",
     "prettier": "^2.6.2",
+    "supertest": "^6.2.3",
+    "ts-jest": "^28.0.3",
     "ts-node": "10.7.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "4.5.2"
   },
   "dependencies": {
     "@tsed/logger": "^6.1.2",
+    "@types/jest": "^27.5.1",
     "body-parser": "^1.19.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.17.2",
+    "jest": "^28.1.0",
     "morgan": "^1.10.0",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.8",
@@ -41,6 +55,7 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts"
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "test": "jest --verbose --forceExit"
   }
 }
