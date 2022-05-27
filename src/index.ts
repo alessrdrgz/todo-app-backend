@@ -7,6 +7,7 @@ import { Express } from "express";
 import { logger } from "./config/LoggerConfig";
 import * as morgan from "morgan";
 import config from "./config/Config";
+import * as cors from "cors";
 
 AppDataSource.initialize()
   .then(async () => {
@@ -15,6 +16,12 @@ AppDataSource.initialize()
     app.use(
       morgan("dev", {
         stream: { write: (log: string) => logger.info(log.trim()) },
+      })
+    );
+
+    app.use(
+      cors({
+        origin: true,
       })
     );
 
