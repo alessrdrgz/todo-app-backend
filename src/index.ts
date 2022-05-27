@@ -9,9 +9,10 @@ import * as morgan from "morgan";
 import config from "./config/Config";
 import * as cors from "cors";
 
-AppDataSource.initialize()
+export const app = express();
+
+export const server = AppDataSource.initialize()
   .then(async () => {
-    const app = express();
     app.use(bodyParser.json());
     app.use(
       morgan("dev", {
@@ -48,7 +49,8 @@ AppDataSource.initialize()
       );
     });
 
-    app.listen(config.PORT);
+    const server = app.listen(config.PORT);
     logger.info(`APP listening on port ${config.PORT}`);
+    return server;
   })
   .catch((e) => logger.error(e));
